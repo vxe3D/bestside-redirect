@@ -7,25 +7,40 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #FF0077, #6F00FF);
+            background: url('https://i.imgur.com/9yJarS6.png') no-repeat center center;
+            background-size: cover;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            color: white;
-            text-align: center;
             overflow: hidden;
-            transition: all 0.5s;
+            position: relative;
+            color: white;
+        }
+
+        /* Gradient overlay z przezroczystością */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 0, 119, 0.6), rgba(111, 0, 255, 0.6));
+            z-index: 0;
         }
 
         .container {
+            position: relative;
+            z-index: 1; /* Na wierzchu gradientu */
             text-align: center;
             background: rgba(0, 0, 0, 0.6);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: auto;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         h1 {
@@ -44,7 +59,7 @@
             display: block;
             margin-top: 20px;
             font-size: 20px;
-            color: #2D9B5F;
+            color: #BC00FF;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
@@ -58,7 +73,7 @@
             margin-top: 20px;
             width: 300px;
             border-radius: 10px;
-            border: 5px solid #fff;
+            border: 0px solid #fff;
         }
 
         .timer {
@@ -66,7 +81,6 @@
             margin-top: 15px;
             color: #f7f7f7;
         }
-
     </style>
 </head>
 <body>
@@ -77,23 +91,24 @@
 
         <img src="https://github.com/vxe3D/bestside-redirect/blob/main/bestside-long.png?raw=true" alt="BestSide">
 
-<p class="timer">Czekaj... Za <span id="timer">5</span> sekund</p>
+        <p class="timer">Czekaj... Za <span id="timer">5</span> sekund</p>
+    </div>
 
-<script>
-    let countdown = 5;
-    const timerElement = document.getElementById('timer');
+    <script>
+        let countdown = 5;
+        const timerElement = document.getElementById('timer');
 
-    const interval = setInterval(() => {
-        countdown--;
+        const interval = setInterval(() => {
+            countdown--;
 
-        if (countdown > 0) {
-            timerElement.textContent = countdown;
-        } else {
-            timerElement.textContent = 0;
-            clearInterval(interval);
-            window.location.href = 'mtasa://51.83.182.33:20376';
-        }
-    }, 1000);
-</script>
+            if (countdown > 0) {
+                timerElement.textContent = countdown;
+            } else {
+                timerElement.textContent = 0;
+                clearInterval(interval);
+                window.location.href = 'mtasa://51.83.182.33:20376';
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
