@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #3e8e41, #2d6a30);
+            background: linear-gradient(45deg, #FF0077, #6F00FF);
             margin: 0;
             padding: 0;
             display: flex;
@@ -75,23 +75,25 @@
         <p>Za chwilę zostaniesz przekierowany na serwer MTA. Jeśli to nie nastąpi, kliknij poniższy link.</p>
         <a class="link" href="mtasa://51.83.182.33:20376">Kliknij, aby połączyć się z serwerem</a>
 
-        <img src="https://www.example.com/your-image.jpg" alt="MTA Server Image">
+        <img src="https://github.com/vxe3D/bestside-redirect/blob/main/bestside-long.png?raw=true" alt="BestSide">
 
-        <p class="timer">Czekaj... Za <span id="timer">5</span> sekund</p>
-    </div>
+<p class="timer">Czekaj... Za <span id="timer">5</span> sekund</p>
 
-    <script>
-        let countdown = 5;
-        const timerElement = document.getElementById('timer');
+<script>
+    let countdown = 5;
+    const timerElement = document.getElementById('timer');
 
-        setInterval(() => {
-            countdown--;
+    const interval = setInterval(() => {
+        countdown--;
+
+        if (countdown > 0) {
             timerElement.textContent = countdown;
-
-            if (countdown <= 0) {
-                window.location.href = 'mtasa://51.83.182.33:20376';
-            }
-        }, 1000);
-    </script>
+        } else {
+            timerElement.textContent = 0;
+            clearInterval(interval);
+            window.location.href = 'mtasa://51.83.182.33:20376';
+        }
+    }, 1000);
+</script>
 </body>
 </html>
